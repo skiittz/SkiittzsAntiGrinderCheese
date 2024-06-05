@@ -114,9 +114,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="metadata.mod" />
     <Content Include="thumb.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="modinfo.sbmi" />
     <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

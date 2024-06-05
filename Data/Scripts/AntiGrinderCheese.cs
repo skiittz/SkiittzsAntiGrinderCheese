@@ -1,13 +1,17 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Sandbox.Game.Entities;
 using Sandbox.Game.Entities.Cube;
 using Sandbox.Game.Entities.Interfaces;
 using Sandbox.Game.Weapons;
 using Sandbox.ModAPI;
 using Sandbox.ModAPI.Weapons;
+using VRage.Game;
 using VRage.Game.Components;
 using VRage.Game.ModAPI;
 using VRage.ModAPI;
 using VRage.Utils;
+using static VRageRender.Utils.MyWingedEdgeMesh;
 
 namespace SkiittzsAntiGrinderCheese
 {
@@ -49,6 +53,12 @@ namespace SkiittzsAntiGrinderCheese
             var owners = block.CubeGrid.BigOwners;
             if (!owners.Any() || owners.Contains(attackingEntityId.Value)) return;
 
+            var factions = MyAPIGateway.Session.Factions;
+            var fac1 = factions.TryGetPlayerFaction(block.OwnerId);
+            var fac2 = factions.TryGetPlayerFaction(attackingEntityId.Value);
+            var Relationship = MyAPIGateway.Session.Factions.GetRelationBetweenFactions(fac1.FactionId, fac2.FactionId);
+            if (Relationship != MyRelationsBetweenFactions.Enemies) return;
+            
             DamageInfo.Amount = 0;
         }
     }

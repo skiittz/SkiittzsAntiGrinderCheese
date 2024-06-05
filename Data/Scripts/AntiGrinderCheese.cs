@@ -9,9 +9,7 @@ using Sandbox.ModAPI.Weapons;
 using VRage.Game;
 using VRage.Game.Components;
 using VRage.Game.ModAPI;
-using VRage.ModAPI;
 using VRage.Utils;
-using static VRageRender.Utils.MyWingedEdgeMesh;
 
 namespace SkiittzsAntiGrinderCheese
 {
